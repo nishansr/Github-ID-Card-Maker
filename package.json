@@ -1,7 +1,8 @@
 {
   "name": "github-card",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Create beautiful, customizable GitHub profile cards with stats, QR codes, and multiple design templates",
   "type": "module",
   "engines": {
     "node": "20.x"
