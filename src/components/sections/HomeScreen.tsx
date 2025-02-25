@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomAlert from "./CustomAlert";
+import CustomAlert from "../CustomAlert";
 
-const Home = () => {
+const HomeScreen = () => {
   const [username, setUsername] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -114,4 +114,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;
