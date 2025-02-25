@@ -28,35 +28,17 @@ GitHub ID Card Maker is a web application that allows you to create personalized
 
 2. Install dependencies:
 
-  ````bash
-  npm install
+```node
+npm install
 
-  ```
+```
 
 3. Start the development server:
-  ```bash
-    npm run dev
 
-  ```
+```node
+  npm run dev
+
+```
 
 4. Open your browser and navigate to
- http://localhost:3000.
-````
-
-### Project Structure
-src/
-├── assets/                 # Images and other assets
-├── components/             # React components
-│   ├── cards/              # Card components
-│   │   ├── Card1.tsx
-│   │   ├── Card2.tsx
-│   │   └── Card3.tsx
-│   ├── sections/           # Section components
-│   │   ├── AboutScreen.tsx
-│   │   ├── ContactScreen.tsx
-│   │   └── ResultScreen.tsx
-│   ├── CustomAlert.tsx     # Custom alert component
-│   └── Home.tsx            # Home component
-├── App.tsx                 # Main app component
-├── index.tsx               # Entry point
-└── ...                     # Other files
+   http://localhost:3000.
