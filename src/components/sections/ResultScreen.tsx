@@ -70,13 +70,15 @@ const ResultScreen = () => {
 
   if (error === "User not found") {
     return (
-      <div className="flex items-center justify-center h-screen text-3xl font-bold">
-        {error}
+      <div className="flex flex-col items-center justify-center h-screen text-3xl font-bold">
+        <div className="mb-30">
+          <h1>User not Found!</h1>
+        </div>
         <button
           onClick={handleNavigate}
-          className="px-5 py-2 bg-[#4337C9] text-white rounded-md hover:bg-[#3c3495]"
+          className="mt-4 px-5 py-2 bg-[#4337C9] text-white rounded-md hover:bg-[#3c3495]"
         >
-          Create
+          Move to Home
         </button>
       </div>
     );

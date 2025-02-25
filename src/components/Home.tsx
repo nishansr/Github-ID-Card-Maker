@@ -5,13 +5,29 @@ import CustomAlert from "./CustomAlert";
 const Home = () => {
   const [username, setUsername] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const navigate = useNavigate();
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      if (response.status === 404) {
+        setError("💀  User not found");
+        setShowAlert(true);
+      } else {
+        navigate(`/result/${username}`);
+      }
+    } catch (error: any) {
+      setError(error.message);
+    }
+  };
 
   const handleCreate = () => {
     if (username.trim() === "") {
       setShowAlert(true);
     } else {
-      navigate(`/result/${username}`);
+      fetchUserData();
     }
   };
 
@@ -40,7 +56,7 @@ const Home = () => {
     <div>
       {showAlert && (
         <CustomAlert
-          message="💀  Please enter a valid username."
+          message={error ?? "💀  Please enter a valid username."}
           onClose={() => setShowAlert(false)}
         />
       )}

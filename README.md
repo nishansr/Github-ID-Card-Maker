@@ -20,7 +20,7 @@ GitHub ID Card Maker is a web application that allows you to create personalized
 
 1. Clone the repository:
 
-   ```bash
+   ```node
    git clone https://github.com/nishansr/github-id-card-maker.git
    cd github-id-card-maker
 
