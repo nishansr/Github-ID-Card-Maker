@@ -28,16 +28,16 @@ GitHub ID Card Maker is a web application that allows you to create personalized
 
 2. Install dependencies:
 
-````bash
-npm install
+  ````bash
+  npm install
 
-```
+  ```
 
 3. Start the development server:
-```bash
-  npm run dev
+  ```bash
+    npm run dev
 
-```
+  ```
 
 4. Open your browser and navigate to
  http://localhost:3000.
