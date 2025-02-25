@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+html,
+body {
+  font-family: "inter", sans-serif, monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
