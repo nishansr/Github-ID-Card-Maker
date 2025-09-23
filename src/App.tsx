@@ -1,26 +1,23 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeScreen from "./components/sections/HomeScreen";
-import ResultScreen from "./components/sections/ResultScreen";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ContactScreen from "./components/sections/ContactScreen";
-import AboutScreen from "./components/sections/AboutScreen";
-import ErrorScreen from "./components/sections/ErrorScreen";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
+import MainInterface from './components/MainInterface';
+import CardScreen from './components/sections/CardScreen';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/result/:username" element={<ResultScreen />} />
-        <Route path="/contact" element={<ContactScreen />} />
-        <Route path="/about" element={<AboutScreen />} />
-        <Route path="*" element={<ErrorScreen />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<MainInterface />} />
+            <Route path="/card/:username" element={<CardScreen />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
