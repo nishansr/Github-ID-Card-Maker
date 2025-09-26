@@ -214,6 +214,25 @@ We welcome contributions! Here's how you can help:
 - Update documentation as needed
 - Ensure all tests pass before submitting
 
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Card not displaying in README?**
+- Ensure the API URL is correct and accessible
+- Check if deployment protection is disabled in Vercel
+- Verify the GitHub username is valid
+
+**API returning 401 error?**
+- Make sure `GICM_TOKEN_KEY` environment variable is set in Vercel
+- Verify your GitHub Personal Access Token has the correct permissions
+- Check if the token hasn't expired
+
+**Styling issues?**
+- Clear your browser cache
+- Try a different theme parameter
+- Ensure all required parameters are included in the URL
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

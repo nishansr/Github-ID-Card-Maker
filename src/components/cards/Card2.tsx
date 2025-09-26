@@ -96,12 +96,14 @@ const Card2: React.FC<CardProps> = ({
 
   // Get the theme data based on the selected card theme
   const themeData = getCardThemeData();
+  
+  // Enhanced bio handling with better error checking
   let bio = "";
-  if (userData.bio != null) {
-    bio =
-      userData.bio.length > 120
-        ? userData.bio.substring(0, 120) + "..."
-        : userData.bio;
+  if (userData?.bio && typeof userData.bio === 'string') {
+    bio = userData.bio.trim();
+    if (bio.length > 120) {
+      bio = bio.substring(0, 120) + "...";
+    }
   } else {
     bio = "No bio available";
   }
