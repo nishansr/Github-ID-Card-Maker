@@ -28,7 +28,7 @@ interface CardProps {
   };
 }
 
-const Card1: React.FC<CardProps> = ({ userData, userStats, qrCode, cardTheme, options }) => {
+const Card1: React.FC<CardProps> = ({ userData, userStats: _userStats, qrCode: _qrCode, cardTheme: _cardTheme, options: _options }) => {
   const { getCardThemeData } = useTheme();
   
   // Get the theme data based on the selected card theme
