@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/card.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "20.x"
     }
   },
   "rewrites": [
