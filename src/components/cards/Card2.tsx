@@ -86,38 +86,40 @@ interface CardProps {
   };
 }
 
-const Card2: React.FC<CardProps> = ({ 
-  userData, 
-  userStats, 
-  userOrganizations = [], 
-  userRepositories = [], 
-  qrCode, 
-  cardTheme, 
-  options 
+const Card2: React.FC<CardProps> = ({
+  userData,
+  userOrganizations = [],
+  userRepositories = [],
+  options,
 }) => {
   const { getCardThemeData } = useTheme();
-  
+
   // Get the theme data based on the selected card theme
   const themeData = getCardThemeData();
   let bio = "";
   if (userData.bio != null) {
-    bio = userData.bio.length > 120 ? userData.bio.substring(0, 120) + "..." : userData.bio;
+    bio =
+      userData.bio.length > 120
+        ? userData.bio.substring(0, 120) + "..."
+        : userData.bio;
   } else {
     bio = "No bio available";
   }
 
   return (
-    <div 
+    <div
       className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl overflow-hidden"
-      style={{ 
+      style={{
         background: themeData.background,
-        border: `1px solid ${themeData.border}`
+        border: `1px solid ${themeData.border}`,
       }}
     >
       {/* Header with gradient */}
-      <div 
+      <div
         className="relative h-32 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${themeData.ring}, ${themeData.fire})` }}
+        style={{
+          background: `linear-gradient(135deg, ${themeData.ring}, ${themeData.fire})`,
+        }}
       >
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
@@ -125,16 +127,22 @@ const Card2: React.FC<CardProps> = ({
         </div>
 
         {/* Extended Profile Information */}
-        {(options?.showLocation || options?.showCompany || options?.showEmail || options?.showTwitter || options?.showBlog || options?.showHireable || options?.showJoinDate) && (
+        {(options?.showLocation ||
+          options?.showCompany ||
+          options?.showEmail ||
+          options?.showTwitter ||
+          options?.showBlog ||
+          options?.showHireable ||
+          options?.showJoinDate) && (
           <div className="mb-6">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <h4 
+              <h4
                 className="text-sm font-semibold mb-3"
                 style={{ color: themeData.sideNums }}
               >
@@ -144,7 +152,7 @@ const Card2: React.FC<CardProps> = ({
                 {options?.showLocation && userData.location && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">📍</span>
-                    <span 
+                    <span
                       className="text-xs truncate"
                       style={{ color: themeData.dates }}
                     >
@@ -155,7 +163,7 @@ const Card2: React.FC<CardProps> = ({
                 {options?.showCompany && userData.company && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">🏢</span>
-                    <span 
+                    <span
                       className="text-xs truncate"
                       style={{ color: themeData.dates }}
                     >
@@ -166,7 +174,7 @@ const Card2: React.FC<CardProps> = ({
                 {options?.showEmail && userData.email && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">📧</span>
-                    <span 
+                    <span
                       className="text-xs truncate"
                       style={{ color: themeData.dates }}
                     >
@@ -177,7 +185,7 @@ const Card2: React.FC<CardProps> = ({
                 {options?.showTwitter && userData.twitter_username && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">🐦</span>
-                    <span 
+                    <span
                       className="text-xs truncate"
                       style={{ color: themeData.dates }}
                     >
@@ -188,7 +196,7 @@ const Card2: React.FC<CardProps> = ({
                 {options?.showBlog && userData.blog && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">🌐</span>
-                    <span 
+                    <span
                       className="text-xs truncate"
                       style={{ color: themeData.dates }}
                     >
@@ -198,19 +206,21 @@ const Card2: React.FC<CardProps> = ({
                 )}
                 {options?.showHireable && userData.hireable !== null && (
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs">{userData.hireable ? '✅' : '❌'}</span>
-                    <span 
+                    <span className="text-xs">
+                      {userData.hireable ? "✅" : "❌"}
+                    </span>
+                    <span
                       className="text-xs"
                       style={{ color: themeData.dates }}
                     >
-                      {userData.hireable ? 'Available' : 'Not available'}
+                      {userData.hireable ? "Available" : "Not available"}
                     </span>
                   </div>
                 )}
                 {options?.showJoinDate && (
                   <div className="flex items-center space-x-2">
                     <span className="text-xs">📅</span>
-                    <span 
+                    <span
                       className="text-xs"
                       style={{ color: themeData.dates }}
                     >
@@ -226,14 +236,14 @@ const Card2: React.FC<CardProps> = ({
         {/* Organizations */}
         {options?.showOrganizations && userOrganizations.length > 0 && (
           <div className="mb-6">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <h4 
+              <h4
                 className="text-sm font-semibold mb-3"
                 style={{ color: themeData.sideNums }}
               >
@@ -241,20 +251,20 @@ const Card2: React.FC<CardProps> = ({
               </h4>
               <div className="flex flex-wrap gap-2">
                 {userOrganizations.slice(0, 4).map((org, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center space-x-1 px-2 py-1 rounded-full border"
-                    style={{ 
+                    style={{
                       backgroundColor: `${themeData.ring}20`,
-                      borderColor: themeData.border
+                      borderColor: themeData.border,
                     }}
                   >
-                    <img 
-                      src={org.avatar_url} 
+                    <img
+                      src={org.avatar_url}
                       alt={org.login}
                       className="w-3 h-3 rounded-full"
                     />
-                    <span 
+                    <span
                       className="text-xs"
                       style={{ color: themeData.dates }}
                     >
@@ -270,14 +280,14 @@ const Card2: React.FC<CardProps> = ({
         {/* Top Repositories */}
         {options?.showTopRepositories && userRepositories.length > 0 && (
           <div className="mb-6">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <h4 
+              <h4
                 className="text-sm font-semibold mb-3"
                 style={{ color: themeData.sideNums }}
               >
@@ -285,16 +295,19 @@ const Card2: React.FC<CardProps> = ({
               </h4>
               <div className="space-y-2">
                 {userRepositories.slice(0, 3).map((repo, index) => (
-                  <div key={index} className="flex justify-between items-center">
+                  <div
+                    key={index}
+                    className="flex justify-between items-center"
+                  >
                     <div className="flex-1 min-w-0">
-                      <p 
+                      <p
                         className="text-xs font-medium truncate"
                         style={{ color: themeData.sideNums }}
                       >
                         {repo.name}
                       </p>
                       {repo.language && (
-                        <p 
+                        <p
                           className="text-xs"
                           style={{ color: themeData.dates }}
                         >
@@ -304,7 +317,7 @@ const Card2: React.FC<CardProps> = ({
                     </div>
                     <div className="flex items-center space-x-1">
                       <span className="text-xs">⭐</span>
-                      <span 
+                      <span
                         className="text-xs"
                         style={{ color: themeData.dates }}
                       >
@@ -317,7 +330,7 @@ const Card2: React.FC<CardProps> = ({
             </div>
           </div>
         )}
-        
+
         {/* Decorative elements */}
         <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
         <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full"></div>
@@ -341,32 +354,29 @@ const Card2: React.FC<CardProps> = ({
       <div className="px-6 pb-6 pt-4">
         {/* Name and Username */}
         <div className="text-center mb-6">
-          <h3 
+          <h3
             className="text-2xl font-bold mb-1"
             style={{ color: themeData.currStreakNum }}
           >
             {userData.name || userData.login}
           </h3>
-          <p 
-            className="mb-3"
-            style={{ color: themeData.dates }}
-          >
+          <p className="mb-3" style={{ color: themeData.dates }}>
             @{userData.login}
           </p>
-          
+
           {/* Badge */}
-          <div 
+          <div
             className="inline-flex items-center px-3 py-1 rounded-full border"
-            style={{ 
+            style={{
               background: `linear-gradient(135deg, ${themeData.ring}20, ${themeData.fire}20)`,
-              borderColor: themeData.ring
+              borderColor: themeData.ring,
             }}
           >
-            <div 
+            <div
               className="w-2 h-2 rounded-full mr-2"
               style={{ backgroundColor: themeData.ring }}
             ></div>
-            <span 
+            <span
               className="text-sm font-medium"
               style={{ color: themeData.ring }}
             >
@@ -377,14 +387,14 @@ const Card2: React.FC<CardProps> = ({
 
         {/* Bio */}
         <div className="mb-6">
-          <div 
+          <div
             className="rounded-2xl p-4 border"
-            style={{ 
+            style={{
               backgroundColor: themeData.background,
-              borderColor: themeData.border
+              borderColor: themeData.border,
             }}
           >
-            <p 
+            <p
               className="text-sm leading-relaxed text-center"
               style={{ color: themeData.dates }}
             >
@@ -396,20 +406,20 @@ const Card2: React.FC<CardProps> = ({
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="text-center">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <p 
+              <p
                 className="text-2xl font-bold"
                 style={{ color: themeData.sideNums }}
               >
                 {userData.public_repos}
               </p>
-              <p 
+              <p
                 className="text-xs font-medium uppercase tracking-wide"
                 style={{ color: themeData.sideLabels }}
               >
@@ -418,20 +428,20 @@ const Card2: React.FC<CardProps> = ({
             </div>
           </div>
           <div className="text-center">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <p 
+              <p
                 className="text-2xl font-bold"
                 style={{ color: themeData.sideNums }}
               >
                 {userData.followers}
               </p>
-              <p 
+              <p
                 className="text-xs font-medium uppercase tracking-wide"
                 style={{ color: themeData.sideLabels }}
               >
@@ -440,20 +450,20 @@ const Card2: React.FC<CardProps> = ({
             </div>
           </div>
           <div className="text-center">
-            <div 
+            <div
               className="rounded-2xl p-4 border"
-              style={{ 
+              style={{
                 background: `linear-gradient(135deg, ${themeData.ring}10, ${themeData.fire}10)`,
-                borderColor: themeData.border
+                borderColor: themeData.border,
               }}
             >
-              <p 
+              <p
                 className="text-2xl font-bold"
                 style={{ color: themeData.sideNums }}
               >
                 {userData.following}
               </p>
-              <p 
+              <p
                 className="text-xs font-medium uppercase tracking-wide"
                 style={{ color: themeData.sideLabels }}
               >
@@ -464,39 +474,36 @@ const Card2: React.FC<CardProps> = ({
         </div>
 
         {/* Footer */}
-        <div 
+        <div
           className="flex items-center justify-between pt-4 border-t"
           style={{ borderColor: themeData.border }}
         >
           <div className="flex items-center space-x-2">
             <div className="flex space-x-1">
-              <div 
+              <div
                 className="w-2 h-2 rounded-full animate-pulse"
                 style={{ backgroundColor: themeData.ring }}
               ></div>
-              <div 
+              <div
                 className="w-2 h-2 rounded-full animate-pulse"
-                style={{ 
+                style={{
                   backgroundColor: themeData.fire,
-                  animationDelay: '0.2s'
+                  animationDelay: "0.2s",
                 }}
               ></div>
-              <div 
+              <div
                 className="w-2 h-2 rounded-full animate-pulse"
-                style={{ 
+                style={{
                   backgroundColor: themeData.currStreakLabel,
-                  animationDelay: '0.4s'
+                  animationDelay: "0.4s",
                 }}
               ></div>
             </div>
-            <span 
-              className="text-xs"
-              style={{ color: themeData.dates }}
-            >
+            <span className="text-xs" style={{ color: themeData.dates }}>
               Active Developer
             </span>
           </div>
-          <div 
+          <div
             className="text-xs font-mono"
             style={{ color: themeData.excludeDaysLabel }}
           >

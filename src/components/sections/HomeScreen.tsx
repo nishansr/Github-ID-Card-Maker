@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomAlert from "../CustomAlert";
-import { useTheme } from "../../contexts/ThemeContext";
 
 const HomeScreen = () => {
   const [username, setUsername] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { theme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -16,20 +14,21 @@ const HomeScreen = () => {
     setIsLoading(true);
     try {
       // Get GitHub token from environment
-      const token = import.meta.env.VITE_GITHUB_TOKEN || process.env.GICM_TOKEN_KEY;
-      
+      const token =
+        import.meta.env.VITE_GITHUB_TOKEN || process.env.GICM_TOKEN_KEY;
+
       const headers: HeadersInit = {
-        'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'GitHub-Card-Maker'
+        Accept: "application/vnd.github.v3+json",
+        "User-Agent": "GitHub-Card-Maker",
       };
-      
+
       // Add authorization header if token is available
       if (token) {
-        headers['Authorization'] = `token ${token}`;
+        headers["Authorization"] = `token ${token}`;
       }
 
       const response = await fetch(`https://api.github.com/users/${username}`, {
-        headers
+        headers,
       });
       if (response.status === 404) {
         setError("💀  User not found");
