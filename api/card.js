@@ -206,4 +206,4 @@ function calculateTopLanguages(repos) {
       percentage: Math.round((size / totalSize) * 100)
     }))
     .sort((a, b) => b.percentage - a.percentage);
-}
+}// Environment variable configured
