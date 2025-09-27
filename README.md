@@ -1,7 +1,13 @@
 # 🔥 GitHub ID Card Maker
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/github-id-card-maker?style=social)](https://github.com/yourusername/github-id-card-maker)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/github-id-card-maker?style=social)](https://github.com/yourusername/github-id-card-maker)
+[![GitHub stars](https://img.shields.io/github/stars/nishansr/Github-ID-Card-Maker?style=social)](https://github.com/nishansr/Github-ID-Card-Maker)
+[![GitHub forks](https://img.shields.io/github/forks/nishansr/Github-ID-Card-Maker?style=social)](https://github.com/nishansr/Github-ID-Card-Maker)
+
+> *"The best minds of my generation are thinking about how to make people click ads."*
+> 
+> *- Jeff Hammerbacher*
+
+[![GitHub Card](https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=nishansr&card=1&theme=default&qr=true&stats=true&bio=true&followers=true)](https://github.com/nishansr)
 
 Create beautiful, customizable GitHub profile cards that you can embed anywhere! Generate stunning visual representations of your GitHub profile with stats, QR codes, and multiple design templates.
 
@@ -30,7 +36,7 @@ Visit our web interface to create your card instantly:
 Generate cards programmatically using our API:
 
 ```
-https://your-domain.vercel.app/api/card?user=USERNAME&card=1&theme=dark
+https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=USERNAME&card=1&theme=dark
 ```
 
 #### Parameters
@@ -49,17 +55,17 @@ https://your-domain.vercel.app/api/card?user=USERNAME&card=1&theme=dark
 
 **Basic card:**
 ```markdown
-![GitHub Card](https://your-domain.vercel.app/api/card?user=octocat)
+![GitHub Card](https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=octocat)
 ```
 
 **Dark theme with stats only:**
 ```markdown
-![GitHub Card](https://your-domain.vercel.app/api/card?user=octocat&theme=dark&qr=false&bio=false&followers=false)
+![GitHub Card](https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=octocat&theme=dark&qr=false&bio=false&followers=false)
 ```
 
 **Custom card template:**
 ```markdown
-![GitHub Card](https://your-domain.vercel.app/api/card?user=octocat&card=2&theme=light)
+![GitHub Card](https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=octocat&card=2&theme=light)
 ```
 
 ## 🛠️ Installation & Development
@@ -72,8 +78,8 @@ https://your-domain.vercel.app/api/card?user=USERNAME&card=1&theme=dark
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/github-id-card-maker.git
-   cd github-id-card-maker
+   git clone https://github.com/nishansr/Github-ID-Card-Maker.git
+   cd Github-ID-Card-Maker
    ```
 
 2. **Install dependencies:**
@@ -126,7 +132,7 @@ npm run build
 ```markdown
 # Hi there! 👋
 
-![My GitHub Card](https://your-domain.vercel.app/api/card?user=yourusername&theme=dark)
+![My GitHub Card](https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=yourusername&theme=dark)
 
 ## About Me
 <!-- Your content here -->
@@ -137,7 +143,7 @@ npm run build
 ```html
 <div align="center">
   <a href="https://github.com/yourusername">
-    <img src="https://your-domain.vercel.app/api/card?user=yourusername&card=2" alt="GitHub Card" />
+    <img src="https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=yourusername&card=2" alt="GitHub Card" />
   </a>
 </div>
 ```
@@ -146,7 +152,7 @@ npm run build
 
 ```html
 <img 
-  src="https://your-domain.vercel.app/api/card?user=yourusername" 
+  src="https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app/api/card?user=yourusername" 
   alt="GitHub Card"
   style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
 />
@@ -221,10 +227,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Stats
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/github-id-card-maker)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/github-id-card-maker)
-![GitHub issues](https://img.shields.io/github/issues/yourusername/github-id-card-maker)
-![GitHub license](https://img.shields.io/github/license/yourusername/github-id-card-maker)
+![GitHub stars](https://img.shields.io/github/stars/nishansr/Github-ID-Card-Maker)
+![GitHub forks](https://img.shields.io/github/forks/nishansr/Github-ID-Card-Maker)
+![GitHub issues](https://img.shields.io/github/issues/nishansr/Github-ID-Card-Maker)
+![GitHub license](https://img.shields.io/github/license/nishansr/Github-ID-Card-Maker)
 
 ---
 
