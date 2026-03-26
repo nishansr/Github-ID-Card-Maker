@@ -13,23 +13,23 @@ interface CardOptions {
   showBio: boolean;
   showFollowers: boolean;
   // Extended profile data
-  showEmail?: boolean;
-  showTwitter?: boolean;
-  showHireable?: boolean;
-  showGists?: boolean;
-  showJoinDate?: boolean;
-  showLocation?: boolean;
-  showCompany?: boolean;
-  showBlog?: boolean;
+  showEmail: boolean;
+  showTwitter: boolean;
+  showHireable: boolean;
+  showGists: boolean;
+  showJoinDate: boolean;
+  showLocation: boolean;
+  showCompany: boolean;
+  showBlog: boolean;
   // Advanced statistics
-  showTotalForks?: boolean;
-  showTotalIssues?: boolean;
-  showTotalPRs?: boolean;
-  showContributionYears?: boolean;
-  showMostStarredRepo?: boolean;
-  showRecentActivity?: boolean;
-  showOrganizations?: boolean;
-  showTopRepositories?: boolean;
+  showTotalForks: boolean;
+  showTotalIssues: boolean;
+  showTotalPRs: boolean;
+  showContributionYears: boolean;
+  showMostStarredRepo: boolean;
+  showRecentActivity: boolean;
+  showOrganizations: boolean;
+  showTopRepositories: boolean;
 }
 
 const ResultScreen = () => {
