@@ -14,8 +14,7 @@ const HomeScreen = () => {
     setIsLoading(true);
     try {
       // Get GitHub token from environment
-      const token =
-        import.meta.env.VITE_GITHUB_TOKEN || process.env.GICM_TOKEN_KEY;
+      const token = import.meta.env.VITE_GITHUB_TOKEN;
 
       const headers: HeadersInit = {
         Accept: "application/vnd.github.v3+json",

@@ -96,7 +96,7 @@ const MainInterface: React.FC = () => {
     UserOrganizations[]
   >([]);
   const [userRepositories, setUserRepositories] = useState<UserRepositories[]>(
-    []
+    [],
   );
   const [qrCode, setQrCode] = useState<string>("");
   const [loading, setLoading] = useState(false);
@@ -134,7 +134,7 @@ const MainInterface: React.FC = () => {
         }, 500); // 500ms delay
       };
     })(),
-    [websiteTheme] // Include websiteTheme in dependencies since fetchUserData uses it
+    [websiteTheme], // Include websiteTheme in dependencies since fetchUserData uses it
   );
 
   const fetchUserData = async (user: string) => {
@@ -145,8 +145,7 @@ const MainInterface: React.FC = () => {
 
     try {
       // Get GitHub token from environment
-      const token =
-        import.meta.env.VITE_GITHUB_TOKEN || process.env.GICM_TOKEN_KEY;
+      const token = import.meta.env.VITE_GITHUB_TOKEN;
 
       const headers: HeadersInit = {
         Accept: "application/vnd.github.v3+json",
@@ -182,13 +181,13 @@ const MainInterface: React.FC = () => {
       // Fetch user stats
       const reposResponse = await fetch(
         `https://api.github.com/users/${user}/repos?per_page=100`,
-        { headers }
+        { headers },
       );
       const repos = await reposResponse.json();
 
       const totalStars = repos.reduce(
         (sum: number, repo: any) => sum + repo.stargazers_count,
-        0
+        0,
       );
 
       // Get top languages
@@ -207,14 +206,14 @@ const MainInterface: React.FC = () => {
       // Calculate additional stats
       const totalForks = repos.reduce(
         (sum: number, repo: any) => sum + repo.forks_count,
-        0
+        0,
       );
 
       // Find most starred repository
       const mostStarredRepo = repos.reduce(
         (max: any, repo: any) =>
           repo.stargazers_count > (max?.stargazers_count || 0) ? repo : max,
-        null
+        null,
       );
 
       // Get contribution years (approximate from account creation)
@@ -222,7 +221,7 @@ const MainInterface: React.FC = () => {
       const currentYear = new Date().getFullYear();
       const contributionYears = Array.from(
         { length: currentYear - createdYear + 1 },
-        (_, i) => createdYear + i
+        (_, i) => createdYear + i,
       );
 
       // Fetch recent activity (public events)
@@ -230,7 +229,7 @@ const MainInterface: React.FC = () => {
       try {
         const eventsResponse = await fetch(
           `https://api.github.com/users/${user}/events/public?per_page=10`,
-          { headers }
+          { headers },
         );
         if (eventsResponse.ok) {
           const events = await eventsResponse.json();
@@ -250,7 +249,7 @@ const MainInterface: React.FC = () => {
       try {
         const issuesResponse = await fetch(
           `https://api.github.com/search/issues?q=author:${user}+type:issue`,
-          { headers }
+          { headers },
         );
         if (issuesResponse.ok) {
           const issuesData = await issuesResponse.json();
@@ -259,7 +258,7 @@ const MainInterface: React.FC = () => {
 
         const prsResponse = await fetch(
           `https://api.github.com/search/issues?q=author:${user}+type:pr`,
-          { headers }
+          { headers },
         );
         if (prsResponse.ok) {
           const prsData = await prsResponse.json();
@@ -291,7 +290,7 @@ const MainInterface: React.FC = () => {
       try {
         const orgsResponse = await fetch(
           `https://api.github.com/users/${user}/orgs`,
-          { headers }
+          { headers },
         );
         if (orgsResponse.ok) {
           const orgs = await orgsResponse.json();
@@ -300,7 +299,7 @@ const MainInterface: React.FC = () => {
               login: org.login,
               avatar_url: org.avatar_url,
               description: org.description || "",
-            }))
+            })),
           );
         }
       } catch (error) {
@@ -325,7 +324,7 @@ const MainInterface: React.FC = () => {
       setUserRepositories(topRepos);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to fetch user data"
+        err instanceof Error ? err.message : "Failed to fetch user data",
       );
     } finally {
       setLoading(false);
@@ -339,17 +338,38 @@ const MainInterface: React.FC = () => {
   }, [username, debouncedFetchUserData]);
 
   const generateAPILink = () => {
-    const baseUrl = window.location.origin;
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL ||
+      (import.meta.env.DEV
+        ? "https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app"
+        : window.location.origin);
     const params = new URLSearchParams({
       user: username,
-      card: cardType.toString(),
+      type: cardType.toString(),
       theme: cardTheme,
+      mode: websiteTheme,
       qr: showQR.toString(),
       stats: showStats.toString(),
       bio: showBio.toString(),
       followers: showFollowers.toString(),
+      showEmail: showEmail.toString(),
+      showTwitter: showTwitter.toString(),
+      showHireable: showHireable.toString(),
+      showGists: showGists.toString(),
+      showJoinDate: showJoinDate.toString(),
+      showLocation: showLocation.toString(),
+      showCompany: showCompany.toString(),
+      showBlog: showBlog.toString(),
+      showTotalForks: showTotalForks.toString(),
+      showTotalIssues: showTotalIssues.toString(),
+      showTotalPRs: showTotalPRs.toString(),
+      showContributionYears: showContributionYears.toString(),
+      showMostStarredRepo: showMostStarredRepo.toString(),
+      showRecentActivity: showRecentActivity.toString(),
+      showOrganizations: showOrganizations.toString(),
+      showTopRepositories: showTopRepositories.toString(),
     });
-    return `${baseUrl}/api/card?${params.toString()}`;
+    return `${apiBaseUrl}/api/card?${params.toString()}`;
   };
 
   const generateMarkdown = () => {

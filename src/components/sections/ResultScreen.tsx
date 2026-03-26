@@ -73,8 +73,7 @@ const ResultScreen = () => {
     const fetchUserData = async () => {
       try {
         // Get GitHub token from environment
-        const token =
-          import.meta.env.VITE_GITHUB_TOKEN || process.env.GICM_TOKEN_KEY;
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
 
         const headers: HeadersInit = {
           Accept: "application/vnd.github.v3+json",
@@ -221,7 +220,11 @@ const ResultScreen = () => {
   };
 
   const generateAPILink = () => {
-    const baseUrl = window.location.origin;
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL ||
+      (import.meta.env.DEV
+        ? "https://github-id-card-maker-5yl1i8yog-nishansrs-projects.vercel.app"
+        : window.location.origin);
     const cardTypeMap = { Card1: "1", Card2: "2", Card3: "3" };
     const type =
       cardTypeMap[selectedCardType as keyof typeof cardTypeMap] || "1";
@@ -230,13 +233,30 @@ const ResultScreen = () => {
       user: username || "",
       type,
       theme: theme,
+      mode: theme,
       qr: cardOptions.showQR.toString(),
       stats: cardOptions.showStats.toString(),
       bio: cardOptions.showBio.toString(),
       followers: cardOptions.showFollowers.toString(),
+      showEmail: cardOptions.showEmail.toString(),
+      showTwitter: cardOptions.showTwitter.toString(),
+      showHireable: cardOptions.showHireable.toString(),
+      showGists: cardOptions.showGists.toString(),
+      showJoinDate: cardOptions.showJoinDate.toString(),
+      showLocation: cardOptions.showLocation.toString(),
+      showCompany: cardOptions.showCompany.toString(),
+      showBlog: cardOptions.showBlog.toString(),
+      showTotalForks: cardOptions.showTotalForks.toString(),
+      showTotalIssues: cardOptions.showTotalIssues.toString(),
+      showTotalPRs: cardOptions.showTotalPRs.toString(),
+      showContributionYears: cardOptions.showContributionYears.toString(),
+      showMostStarredRepo: cardOptions.showMostStarredRepo.toString(),
+      showRecentActivity: cardOptions.showRecentActivity.toString(),
+      showOrganizations: cardOptions.showOrganizations.toString(),
+      showTopRepositories: cardOptions.showTopRepositories.toString(),
     });
 
-    return `${baseUrl}/api/card?${params.toString()}`;
+    return `${apiBaseUrl}/api/card?${params.toString()}`;
   };
 
   const copyShareableLink = () => {
