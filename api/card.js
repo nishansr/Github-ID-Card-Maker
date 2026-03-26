@@ -60,7 +60,7 @@ export default async function handler(req, res) {
       ? {
           args: chromium.args,
           executablePath: await chromium.executablePath(),
-          headless: chromium.headless
+          headless: true
         }
       : {
           headless: true
